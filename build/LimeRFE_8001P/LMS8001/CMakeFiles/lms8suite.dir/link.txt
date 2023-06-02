@@ -1,0 +1,2 @@
+/usr/bin/ar qc liblms8suite.a  CMakeFiles/lms8suite.dir/lms8suiteApp.cpp.o CMakeFiles/lms8suite.dir/lms8suiteAppFrame.cpp.o CMakeFiles/lms8suite.dir/lms8suiteApp_gui.cpp.o CMakeFiles/lms8suite.dir/dlgAbout.cpp.o
+/usr/bin/ranlib liblms8suite.a

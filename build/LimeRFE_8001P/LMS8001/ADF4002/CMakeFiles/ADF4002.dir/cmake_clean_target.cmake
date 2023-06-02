@@ -1,0 +1,3 @@
+file(REMOVE_RECURSE
+  "libADF4002.a"
+)

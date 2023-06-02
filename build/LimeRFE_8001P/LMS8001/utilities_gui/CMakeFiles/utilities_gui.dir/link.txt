@@ -1,0 +1,2 @@
+/usr/bin/ar qc libutilities_gui.a  CMakeFiles/utilities_gui.dir/utilities_gui.cpp.o CMakeFiles/utilities_gui.dir/dlgConnectionSettings.cpp.o CMakeFiles/utilities_gui.dir/SPI_wxgui.cpp.o CMakeFiles/utilities_gui.dir/pnlMiniLog.cpp.o CMakeFiles/utilities_gui.dir/dlgFullMessageLog.cpp.o CMakeFiles/utilities_gui.dir/dlgDeviceInfo.cpp.o CMakeFiles/utilities_gui.dir/GPIO_wxgui.cpp.o CMakeFiles/utilities_gui.dir/dlgTempCalibrate.cpp.o CMakeFiles/utilities_gui.dir/dlgConnectionSettingsLMS7.cpp.o
+/usr/bin/ranlib libutilities_gui.a

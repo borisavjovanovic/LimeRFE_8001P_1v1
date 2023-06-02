@@ -1,0 +1,2 @@
+/usr/bin/ar qc libLMS8001.a  CMakeFiles/LMS8001.dir/LMS8001.cpp.o CMakeFiles/LMS8001.dir/LMS8001_parameters.cpp.o CMakeFiles/LMS8001.dir/LMS8001_statuses.cpp.o CMakeFiles/LMS8001.dir/lmsComms.cpp.o CMakeFiles/LMS8001.dir/LMS8001_RegistersMap.cpp.o CMakeFiles/LMS8001.dir/connectionManager/ConnectionManager.cpp.o CMakeFiles/LMS8001.dir/connectionManager/ConnectionCOM.cpp.o CMakeFiles/LMS8001.dir/connectionManager/ConnectionUSB.cpp.o
+/usr/bin/ranlib libLMS8001.a

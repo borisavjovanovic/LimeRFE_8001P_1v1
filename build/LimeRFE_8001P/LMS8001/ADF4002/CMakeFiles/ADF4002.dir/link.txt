@@ -1,0 +1,2 @@
+/usr/bin/ar qc libADF4002.a  CMakeFiles/ADF4002.dir/ADF4002.cpp.o CMakeFiles/ADF4002.dir/ADF4002_wxgui_view.cpp.o CMakeFiles/ADF4002.dir/ADF4002_wxgui.cpp.o
+/usr/bin/ranlib libADF4002.a

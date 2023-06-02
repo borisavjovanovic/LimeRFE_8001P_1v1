@@ -1,0 +1,4 @@
+//LMS_ICO ICON "resources/LMS_ICO.ico"
+LMS_ICO ICON "LMS_ICO.ico"
+
+#include "wx/msw/wx.rc"

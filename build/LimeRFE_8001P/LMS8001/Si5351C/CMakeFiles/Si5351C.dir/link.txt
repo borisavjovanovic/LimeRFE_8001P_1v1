@@ -1,0 +1,2 @@
+/usr/bin/ar qc libSi5351C.a  CMakeFiles/Si5351C.dir/Si5351C.cpp.o CMakeFiles/Si5351C.dir/Si5351C_wxgui_view.cpp.o CMakeFiles/Si5351C.dir/Si5351C_wxgui.cpp.o
+/usr/bin/ranlib libSi5351C.a

@@ -1,0 +1,84 @@
+########################################################################
+## Support for LimeRFE_8001P
+########################################################################
+set(THIS_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+
+add_subdirectory(LMS8001)
+include_directories(LMS8001)
+
+set(LimeRFE_8001PAPI_SOURCES
+   ${THIS_SOURCE_DIR}/LimeRFE_8001P_cmd.cpp
+   ${THIS_SOURCE_DIR}/LimeRFE_8001P_api.cpp
+   ${THIS_SOURCE_DIR}/LimeRFE_8001P_Device.cpp
+#milans 221128	
+    ${THIS_SOURCE_DIR}/LMS8001/API/lms8_device.cpp
+	${THIS_SOURCE_DIR}/LMS8001/lms8001/connectionManager/ConnectionManager.cpp
+	${THIS_SOURCE_DIR}/LMS8001/lms8001/connectionManager/ConnectionCOM.cpp
+	${THIS_SOURCE_DIR}/LMS8001/lms8001/LMS8001.cpp
+	${THIS_SOURCE_DIR}/LMS8001/lms8001/lmsComms.cpp
+	${THIS_SOURCE_DIR}/LMS8001/lms8001/LMS8001_RegistersMap.cpp
+	${THIS_SOURCE_DIR}/LMS8001/lms8001/LMS8001_parameters.cpp    
+)
+
+set(LimeRFE_8001PGUI_SOURCES
+    ${THIS_SOURCE_DIR}/LimeRFE_8001P_gui.cpp
+    ${THIS_SOURCE_DIR}/LimeRFE_8001P_wxgui.cpp
+    ${THIS_SOURCE_DIR}/LimeRFE_8001P_cmd.cpp
+    ${THIS_SOURCE_DIR}/LimeRFE_8001P_Device.cpp
+#milans 221128	
+    ${THIS_SOURCE_DIR}/LMS8001/API/lms8_device.cpp
+	${THIS_SOURCE_DIR}/LMS8001/lms8001/connectionManager/ConnectionManager.cpp
+	${THIS_SOURCE_DIR}/LMS8001/lms8001/connectionManager/ConnectionCOM.cpp
+	${THIS_SOURCE_DIR}/LMS8001/lms8001/LMS8001.cpp
+	${THIS_SOURCE_DIR}/LMS8001/lms8001/lmsComms.cpp
+	${THIS_SOURCE_DIR}/LMS8001/lms8001/LMS8001_RegistersMap.cpp
+	${THIS_SOURCE_DIR}/LMS8001/lms8001/LMS8001_parameters.cpp 
+)
+#milans 200309
+#if(MSVC)
+#    list(APPEND LimeRFE_8001P_GUI_SOURCES ${THIS_SOURCE_DIR}/external/termiWin/termiWin.c)
+#endif()
+
+##set(LimeRFE_8001P_SOURCES
+##    ${THIS_SOURCE_DIR}/LimeRFE_8001P_cmd.cpp
+##    ${THIS_SOURCE_DIR}/LimeRFE_8001P_api.cpp
+##    ${THIS_SOURCE_DIR}/LimeRFE_8001P_Device.cpp
+##)
+
+#milans 200309
+#if(MSVC)
+#    list(APPEND LimeRFE_8001P_SOURCES ${THIS_SOURCE_DIR}/external/termiWin/termiWin.c)
+#endif()
+
+########################################################################
+## Feature registration
+########################################################################
+include(FeatureSummary)
+include(CMakeDependentOption)
+cmake_dependent_option(ENABLE_LimeRFE_8001P "Enable LimeRFE_8001P support" ON "ENABLE_LIBRARY" OFF)
+add_feature_info(LimeRFE_8001P ENABLE_LimeRFE_8001P "LimeRFE_8001P support")
+
+if(ENABLE_LimeRFE_8001P AND ENABLE_GUI)
+    target_compile_definitions(LimeSuiteGUI PUBLIC "LimeRFE_8001P")
+endif()
+
+if (NOT ENABLE_LimeRFE_8001P)
+    return()
+endif()
+
+########################################################################
+## Add to library
+########################################################################
+if(ENABLE_GUI)
+    target_sources(LimeSuiteGUI PRIVATE ${LimeRFE_8001PGUI_SOURCES})
+endif()
+
+target_sources(LimeSuite PRIVATE ${LimeRFE_8001PAPI_SOURCES})
+add_subdirectory(examples)
+
+#target_link_libraries(
+#    LimeSuiteGUI
+#    lms8suite
+#    ${wxWidgets_LIBRARIES}
+#)
+

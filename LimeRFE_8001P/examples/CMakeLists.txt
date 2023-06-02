@@ -1,0 +1,11 @@
+add_executable(LimeRFE_8001P_USB_example LimeRFE_8001P_USB_example.cpp)
+set_target_properties(LimeRFE_8001P_USB_example PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+target_link_libraries(LimeRFE_8001P_USB_example LimeRFE_8001PAPI)
+
+add_executable(LimeRFE_8001P_LMS8_example LimeRFE_8001P_LMS8_example.cpp)
+set_target_properties(LimeRFE_8001P_LMS8_example PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+target_link_libraries(LimeRFE_8001P_LMS8_example LimeRFE_8001PAPI LMS8API)
+
+add_executable(LimeRFE_8001P_example LimeRFE_8001P_example.cpp)
+set_target_properties(LimeRFE_8001P_example PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+target_link_libraries(LimeRFE_8001P_example LimeRFE_8001PAPI LMS8API)
