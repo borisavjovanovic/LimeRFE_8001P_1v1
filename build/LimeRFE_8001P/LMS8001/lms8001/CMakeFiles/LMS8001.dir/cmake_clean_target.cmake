@@ -1,3 +1,0 @@
-file(REMOVE_RECURSE
-  "libLMS8001.a"
-)

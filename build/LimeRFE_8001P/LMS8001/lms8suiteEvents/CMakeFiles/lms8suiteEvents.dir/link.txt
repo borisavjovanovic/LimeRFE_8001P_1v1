@@ -1,2 +1,0 @@
-/usr/bin/ar qc liblms8suiteEvents.a  CMakeFiles/lms8suiteEvents.dir/lms8suiteEvents.cpp.o
-/usr/bin/ranlib liblms8suiteEvents.a
