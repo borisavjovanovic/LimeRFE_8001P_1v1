@@ -668,6 +668,7 @@ extern "C"
 //milans 221201
 	API_EXPORT int CALL_CONV LimeRFE_8001P_SetState(limerfe_8001p_dev_t* LimeRFE_8001P, limerfe_8001p_boardState state);
 	API_EXPORT int CALL_CONV LimeRFE_8001P_GetState(limerfe_8001p_dev_t* LimeRFE_8001P, limerfe_8001p_boardState* state);
+	API_EXPORT limerfe_8001p_dev_t *CALL_CONV LimeRFE_8001P_FindAndOpen(lms_device_t *dev);
 
 	/**
 	 *This function configures the LimeLimeRFE_8001P board.
@@ -873,6 +874,7 @@ extern "C"
 	API_EXPORT int LimeRFE_8001P_SPI_read(limerfe_8001p_dev_t *LimeRFE_8001P, uint16_t maddress, uint16_t address, uint16_t * pData);
 	API_EXPORT int LimeRFE_8001P_SPI_write_buffer(lms_device_t *lms, unsigned char *c, int size);
 	API_EXPORT int LimeRFE_8001P_SPI_read_buffer(lms_device_t *lms, unsigned char *c, int size);
+	API_EXPORT int LimeRFE_8001P_ADF4002_Config(limerfe_8001p_dev_t  *LimeRFE_8001P, double freq, int *rcount, int *ncount);
 
 #ifdef __cplusplus
 } // extern "C"

@@ -11,6 +11,8 @@
 // B.J. commented 24.11.2022
 #include <thread>
 // #include "LimeSuite.h"
+#include "ADF4002.h"
+#include "lmsComms.h"
 
 #define MADDRESS 170 * 32
 #define MADDRESS2 171 * 32
@@ -2065,4 +2067,41 @@ int Limerfe_8001p_spi_read_buffer(lms_device_t *lms, unsigned char *c, int size)
 		return -1;
 	}
 }
+
+int Limerfe_8001p_ADF4002_config(lms_device_t *lms, LimeRFE_8001P_COM com, double freq, int & rcount, int & ncount)
+{
+
+	
+	LMScomms* lms8controlPort = new LMScomms();
+	cout << "LMS8Suite: handle =" << com.hComm << std::endl;  // B.J.
+	lms8controlPort->InheritCOM(com.hComm);
+	lms8controlPort->limerfe_8001p_do_mask = true;
+	lms8controlPort->limerfe_8001p_cmd_mask = 0x80;
+
+	lms8_ADF4002 * adfModule = new lms8_ADF4002();
+	adfModule->Initialize(lms8controlPort);
+	
+	unsigned char data[12];
+	rcount = 0;
+	ncount = 0;
+	
+	adfModule->SetDefaults();
+    adfModule->SetFrefFvco(freq/1e6, 40.0, rcount, ncount);
+	adfModule->GetConfig(data);
+
+	
+	LMScomms::GenericPacket pkt;
+	pkt.cmd = CMD_ADF4002_WR;
+	pkt.outBuffer.resize(12, 0);
+	memcpy(&pkt.outBuffer[0], data, 12);
+	LMScomms::TransferStatus status;
+	status = lms8controlPort->TransferPacket(pkt);
+	if (status != LMScomms::TRANSFER_SUCCESS || pkt.status != STATUS_COMPLETED_CMD)
+	{
+		perror("ADF configuration failed");
+	}
+}
+
+
+
 // end B.J.

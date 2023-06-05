@@ -50,7 +50,7 @@ set(LMS8API_INCLUDES
 set (CMAKE_CXX_STANDARD 11)
 
 set(LMS8API_SOURCES
-    # ADF4002/ADF4002.cpp
+    ADF4002/ADF4002.cpp
     API/lms8_api.cpp
     API/lms8_device.cpp
 #    API/Lms8Generic.cpp

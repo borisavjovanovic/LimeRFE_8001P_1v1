@@ -24,7 +24,8 @@ set(LimeRFE_8001PAPI_SOURCES
 	LMS8001/lms8001/LMS8001.cpp
 	LMS8001/lms8001/lmsComms.cpp
 	LMS8001/lms8001/LMS8001_RegistersMap.cpp
-	LMS8001/lms8001/LMS8001_parameters.cpp    
+	LMS8001/lms8001/LMS8001_parameters.cpp
+    LMS8001/ADF4002/ADF4002.cpp    
 )
 
 SET(LimeRFE_8001PAPI_INCLUDES

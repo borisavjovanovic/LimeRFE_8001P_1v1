@@ -25,7 +25,7 @@ int error()
 
 int main(int argc, char** argv)
 {	
-	limerfe_8001p_boardState state;
+	//limerfe_8001p_boardState state;
 	int result = 0;	
     int isLocked = 0;
 
@@ -35,9 +35,12 @@ int main(int argc, char** argv)
     float centerFreq = 0.0;
     float bandwidth = 0.0;
     char stringValue[100];
-
-
+    
+    int rcount = 0; 
+    int ncount = 0;
+ 
     limerfe_8001p = LimeRFE_8001P_Open("/dev/ttyACM0", nullptr);
+    //limerfe_8001p = LimeRFE_8001P_FindAndOpen(nullptr);
 
 	if (limerfe_8001p == nullptr) {
 		std::cout << "Error: failed to open device" << std::endl;
@@ -74,6 +77,12 @@ int main(int argc, char** argv)
         printf("Error loading state.\n");
     printf("Finished\n");
 
+    // uncomment this if tou change ADF4002 configuration, put desired ext.ref.frequency
+    
+    // result = LimeRFE_8001P_ADF4002_Config(limerfe_8001p, 30.72e6, &rcount, &ncount);
+    // printf("ADF4002 tune: rcount=%d, ncount=%d\n", rcount, ncount);  // to check
+    // sleep(1); // important delay
+    
     printf("Smart Tuning PLL...\n");
 
     result = LMS8_PLL_Smart_Tune(lms8_device, 4.9);

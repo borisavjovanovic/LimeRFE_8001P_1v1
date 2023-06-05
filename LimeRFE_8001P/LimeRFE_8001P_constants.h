@@ -290,6 +290,7 @@ extern "C"
 //B.J.
 int Limerfe_8001p_SPI_write(lms_device_t *lms, uint16_t maddress, uint16_t address, uint16_t data);
 int Limerfe_8001p_SPI_read(lms_device_t *lms, uint16_t maddress, uint16_t address, uint16_t *data);
+int Limerfe_8001p_ADF4002_config(lms_device_t *lms, LimeRFE_8001P_COM com, double freq, int & rcount,	int & ncount);
 
 #if __cplusplus
 }
