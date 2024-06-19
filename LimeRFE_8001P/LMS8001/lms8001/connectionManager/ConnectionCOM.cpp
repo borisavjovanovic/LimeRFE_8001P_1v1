@@ -502,6 +502,11 @@ lms8_IConnection::DeviceStatus ConnectionCOM::Open(const char *comName, int baud
 	tty.c_iflag &= ~IGNBRK;
 	tty.c_lflag = 0;
 	tty.c_oflag = 0;
+
+	tty.c_iflag&=~(IGNCR|IUTF8);
+    tty.c_oflag&=~(ONLCR|OCRNL);
+	tty.c_iflag&=~(INLCR|ICRNL);
+	
 	tty.c_cc[VMIN] = 0;	 // read non blocking
 	tty.c_cc[VTIME] = 5; // 0.5 seconds read timeout
 
