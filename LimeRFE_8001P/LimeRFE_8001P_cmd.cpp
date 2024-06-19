@@ -133,6 +133,7 @@ int Limerfe_8001p_serialport_init(const char *serialport, int baud, LimeRFE_8001
 	cfsetispeed(&toptions, brate);
 	cfsetospeed(&toptions, brate);
 
+
 	// 8N1
 	toptions.c_cflag &= ~PARENB;
 	toptions.c_cflag &= ~CSTOPB;
@@ -145,8 +146,14 @@ int Limerfe_8001p_serialport_init(const char *serialport, int baud, LimeRFE_8001
 	toptions.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG); // make raw
 	toptions.c_oflag &= ~OPOST;							 // make raw
 														 // see: http://unixwiz.net/techtips/termios-vmin-vtime.html
+	
+	toptions.c_iflag&=~(IGNCR|IUTF8);
+    toptions.c_oflag&=~(ONLCR|OCRNL);
+	toptions.c_iflag&=~(INLCR|ICRNL);
+	toptions.c_iflag &= ~IGNBRK;
+
 	toptions.c_cc[VMIN] = 0;
-	toptions.c_cc[VTIME] = 20;
+	toptions.c_cc[VTIME] = 5; //50;
 
 	res = tcsetattr(com->fd, TCSANOW, &toptions);
 
